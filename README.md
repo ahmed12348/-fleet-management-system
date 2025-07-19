@@ -16,9 +16,8 @@ This project is a backend API for a bus fleet management system. It allows users
 ## 🛠️ Prerequisites
 - PHP 8.2 or higher
 - Composer (dependency manager for PHP)
-- MySQL or SQLite (for the database)
+- MySQL (for the database)
 - Git (to clone the project)
-- Node.js & npm (for frontend assets, optional)
 
 ---
 
@@ -26,8 +25,8 @@ This project is a backend API for a bus fleet management system. It allows users
 
 ### 1. Clone the Repository
 ```
-git clone <your-repo-url>
-cd fleet-management
+git clone https://github.com/ahmed12348/-fleet-management-system.git
+cd -fleet-management-system
 ```
 
 ### 2. Install PHP Dependencies
@@ -46,8 +45,7 @@ php artisan key:generate
 ```
 
 ### 5. Configure Database
-- Open `.env` and set your database connection (MySQL or SQLite recommended):
-  - For SQLite, set `DB_CONNECTION=sqlite` and create a file `database/database.sqlite`.
+- Open `.env` and set your database connection (MySQL recommended):
   - For MySQL, set `DB_CONNECTION=mysql` and update `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`.
 
 ### 6. Run Migrations & Seeders
@@ -56,12 +54,9 @@ php artisan migrate --seed
 ```
 This will create all tables and fill them with demo data (stations, trips, buses, etc).
 
-### 7. (Optional) Install Node.js Dependencies
-```
-npm install && npm run dev
-```
 
-### 8. Start the Server
+
+### 7. Start the Server
 ```
 php artisan serve
 ```
