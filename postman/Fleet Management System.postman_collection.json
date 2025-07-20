@@ -126,13 +126,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "5|8cBbzN6kFrJMSCpm5RvdRedUh15BwcGsqZzyFUdF66918303",
+									"value": "3|LLhykP7hmfayyYCHwHvWw8EOfppBIFQgxilyvp5n10f207b2s",
 									"type": "string"
 								}
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"trip_id\": 1,\r\n  \"from_station_id\": 1,\r\n  \"to_station_id\": 4\r\n}",
@@ -165,7 +171,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "5|8cBbzN6kFrJMSCpm5RvdRedUh15BwcGsqZzyFUdF66918303",
+									"value": "2|1QXqE1Blki3yLohErImQATpyDsvFLMqGfwz2QbGg3e77cb5d",
 									"type": "string"
 								}
 							]
@@ -182,7 +188,7 @@
 							"raw": "{\n  \"trip_id\": 1,\n  \"from_station_id\": 1,\n  \"to_station_id\": 4,\n  \"seat_number\": 6\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/book",
+							"raw": "http://localhost:8000/api/book?Accept=application/json",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -191,6 +197,12 @@
 							"path": [
 								"api",
 								"book"
+							],
+							"query": [
+								{
+									"key": "Accept",
+									"value": "application/json"
+								}
 							]
 						}
 					},
