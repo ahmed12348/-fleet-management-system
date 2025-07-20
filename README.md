@@ -50,7 +50,7 @@ php artisan key:generate
 
 ### 6. Run Migrations & Seeders
 ```
-php artisan migrate --seed
+php artisan migrate:refresh --seed
 ```
 This will create all tables and fill them with demo data (stations, trips, buses, etc).
 
@@ -75,7 +75,7 @@ The API will be available at `http://localhost:8000` by default.
 
 ### 1. Get Available Seats
 ```
-GET /api/available-seats
+POST /api/available-seats
 Headers: Authorization: Bearer <token>
 Body (JSON):
 {
@@ -99,6 +99,25 @@ Body (JSON):
 }
 ```
 - Returns success or error if seat is already booked for that segment.
+
+---
+
+## 📥 Postman Collection (Bonus)
+
+A ready-to-use Postman collection is included for easy API testing!
+
+**How to use:**
+1. Download the collection file: [Download Postman Collection](./postman_collection.json)
+2. Open Postman and click "Import".
+3. Select the downloaded `postman_collection.json` file.
+4. Set your API base URL (e.g., `http://localhost:8000`).
+5. Register/login to get your Bearer token, then set it in the collection's Authorization tab.
+6. Use the provided requests to test:
+   - Get Available Seats
+   - Book a Seat
+   - (and any other endpoints included)
+
+**This makes it easy for anyone to test the API without writing code!**
 
 ---
 
