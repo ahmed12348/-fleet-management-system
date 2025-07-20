@@ -107,22 +107,16 @@ Body (JSON):
 A ready-to-use Postman collection is included for easy API testing!
 
 **How to use:**
-1. Download the collection file: [Download Postman Collection](./postman_collection.json)
+1. Download the collection file: [Download Postman Collection](postman/Fleet Management System.postman_collection.json)
 2. Open Postman and click "Import".
-3. Select the downloaded `postman_collection.json` file.
+3. Select the downloaded `Fleet Management System.postman_collection.json` file.
 4. Set your API base URL (e.g., `http://localhost:8000`).
 5. Register/login to get your Bearer token, then set it in the collection's Authorization tab.
 6. Use the provided requests to test:
    - Get Available Seats
    - Book a Seat
-   - (and any other endpoints included)
 
 **This makes it easy for anyone to test the API without writing code!**
-
----
-
-## 👤 Admin/Demo Access
-- Register a new user via `/api/register` or use the seeders to create demo users.
 
 ---
 
