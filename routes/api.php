@@ -19,6 +19,5 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/available-seats', [BookingController::class, 'availableSeats']);
     Route::post('/book', [BookingController::class, 'book']);
-    // Route::get('/seats/available', [BookingController::class, 'availableSeats']);
-    // Route::post('/book', [BookingController::class, 'book']);
+
 });

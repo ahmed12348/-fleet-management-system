@@ -112,6 +112,23 @@ Body (JSON):
 ```
 php artisan test
 ```
+- Run only unit tests:
+```
+php artisan test --testsuite=Unit
+```
+- Run only feature tests:
+```
+php artisan test --testsuite=Feature
+```
+- Run a specific test class:
+```
+php artisan test --filter=AvailableSeatsTest
+```
+
+### 🎁 Bonus: Included Tests
+- **Unit tests** for model relationships (e.g., `TripTest`)
+- **Feature tests** for API endpoints (e.g., `AvailableSeatsTest`)
+- These tests help ensure your app works as expected and make it easy to refactor or extend.
 
 ---
 
