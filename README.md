@@ -12,6 +12,7 @@ A comprehensive Laravel 10 RESTful API for managing inventory across multiple wa
 - **Event System**: Low-stock alerts and notifications
 - **Comprehensive Testing**: Unit and feature tests with 100% coverage
 - **RESTful API**: Clean, consistent JSON responses
+- **Postman Collection**: Complete API testing collection with examples
 
 ## 📋 Requirements
 
@@ -70,6 +71,8 @@ php artisan serve
 The API will be available at `http://localhost:8000`
 
 ## 📚 API Endpoints
+
+> **💡 Quick Start**: Import the Postman collection for instant API testing with all endpoints pre-configured!
 
 ### Authentication
 
@@ -232,6 +235,80 @@ Content-Type: application/json
 }
 ```
 
+## 📮 Postman Collection
+
+### Import the Collection
+The project includes a complete Postman collection with all API endpoints, sample requests, and responses.
+
+**Collection File**: `postman/Fleet_Management_Inventory_API.postman_collection.json`
+
+### How to Import:
+1. Open Postman
+2. Click **Import** button
+3. Select the `Fleet_Management_Inventory_API.postman_collection.json` file
+4. Click **Import**
+
+### Collection Structure:
+```
+Fleet Management - Inventory API
+├── Authentication
+│   ├── Register User
+│   ├── Login User
+│   └── Logout User
+├── Warehouses
+│   ├── Get All Warehouses
+│   ├── Get Warehouse by ID
+│   ├── Get Warehouse Inventory
+│   └── Create Warehouse
+├── Inventory Items
+│   ├── Get All Inventory Items
+│   ├── Search Inventory Items
+│   ├── Get Inventory Item by ID
+│   ├── Create Inventory Item
+│   ├── Update Inventory Item
+│   └── Delete Inventory Item
+├── Stock Management
+│   ├── Get All Stocks
+│   ├── Get Stocks with Filters
+│   ├── Get Stock by ID
+│   ├── Add/Update Stock
+│   ├── Update Stock Quantity
+│   └── Delete Stock
+└── Stock Transfers
+    ├── Get All Stock Transfers
+    ├── Get Stock Transfers with Filters
+    ├── Get Stock Transfer by ID
+    ├── Create Stock Transfer
+    └── Cancel Stock Transfer
+```
+
+### Environment Variables:
+The collection uses these variables:
+- `{{base_url}}` - API base URL (default: `http://localhost:8000`)
+- `{{auth_token}}` - Authentication token (set after login)
+
+### Quick Start with Postman:
+1. **Set Base URL**: Update `{{base_url}}` to your server URL
+2. **Register/Login**: Use Authentication endpoints to get token
+3. **Set Token**: Copy token from login response to `{{auth_token}}` variable
+4. **Test Endpoints**: All requests are ready to use!
+
+### Sample Workflow:
+1. **Register User** → Get token
+2. **Create Warehouse** → Get warehouse ID
+3. **Create Inventory Item** → Get item ID
+4. **Add Stock** → Set initial inventory
+5. **Transfer Stock** → Test stock transfers
+6. **Check Inventory** → View warehouse inventory
+
+### Collection Features:
+- ✅ **Complete API Coverage**: All 20+ endpoints included
+- ✅ **Sample Data**: Realistic request/response examples
+- ✅ **Environment Variables**: Easy configuration
+- ✅ **Authentication**: Token-based auth setup
+- ✅ **Error Examples**: Common error responses
+- ✅ **Documentation**: Inline descriptions for each endpoint
+
 ## 🧪 Testing
 
 ### Run All Tests
@@ -369,12 +446,28 @@ GET /api/health
 
 This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## 📁 Project Files
+
+### Key Files:
+- **API Collection**: `postman/Fleet_Management_Inventory_API.postman_collection.json`
+- **Documentation**: `README.md` (this file)
+- **Database Seeders**: `database/seeders/InventorySeeder.php`
+- **Tests**: `tests/` directory with comprehensive test coverage
+
+### Collection Features:
+- **20+ API Endpoints** with sample requests/responses
+- **Environment Variables** for easy configuration
+- **Authentication Flow** with token management
+- **Complete Workflow** from registration to stock transfers
+- **Error Examples** for common scenarios
+
 ## 🆘 Support
 
 For support and questions:
 - Create an issue in the repository
 - Check the documentation
 - Review the test cases for usage examples
+- Use the Postman collection for API testing
 
 ---
 
