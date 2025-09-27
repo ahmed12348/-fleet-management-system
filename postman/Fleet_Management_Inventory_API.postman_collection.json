@@ -1,0 +1,728 @@
+{
+	"info": {
+		"_postman_id": "fleet-management-inventory-api",
+		"name": "Fleet Management - Inventory API",
+		"description": "Complete API collection for the Fleet Management Inventory System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": ["{{base_url}}"],
+							"path": ["api", "register"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/register",
+									"host": ["{{base_url}}"],
+									"path": ["api", "register"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully.\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\"\n    },\n    \"token\": \"1|abc123...\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "login"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/login",
+									"host": ["{{base_url}}"],
+									"path": ["api", "login"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successful.\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\"\n    },\n    \"token\": \"1|abc123...\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": ["{{base_url}}"],
+							"path": ["api", "logout"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/logout",
+									"host": ["{{base_url}}"],
+									"path": ["api", "logout"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logged out successfully.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Warehouses",
+			"item": [
+				{
+					"name": "Get All Warehouses",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/warehouses",
+							"host": ["{{base_url}}"],
+							"path": ["api", "warehouses"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/warehouses",
+									"host": ["{{base_url}}"],
+									"path": ["api", "warehouses"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Main Warehouse\",\n            \"location\": \"New York, NY\",\n            \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n            \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Warehouse by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/warehouses/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "warehouses", "1"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/warehouses/1",
+									"host": ["{{base_url}}"],
+									"path": ["api", "warehouses", "1"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Main Warehouse\",\n        \"location\": \"New York, NY\",\n        \"stocks\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Warehouse Inventory",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/warehouses/1/inventory",
+							"host": ["{{base_url}}"],
+							"path": ["api", "warehouses", "1", "inventory"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/warehouses/1/inventory",
+									"host": ["{{base_url}}"],
+									"path": ["api", "warehouses", "1", "inventory"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"warehouse\": {\n            \"id\": 1,\n            \"name\": \"Main Warehouse\",\n            \"location\": \"New York, NY\"\n        },\n        \"inventory\": [\n            {\n                \"id\": 1,\n                \"inventory_item\": {\n                    \"id\": 1,\n                    \"name\": \"Widget Pro\",\n                    \"sku\": \"WP001\",\n                    \"price\": 29.99\n                },\n                \"quantity\": 100,\n                \"stock_level\": \"high_stock\",\n                \"is_low_stock\": false\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Warehouse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Secondary Warehouse\",\n    \"location\": \"Los Angeles, CA\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/warehouses",
+							"host": ["{{base_url}}"],
+							"path": ["api", "warehouses"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Secondary Warehouse\",\n    \"location\": \"Los Angeles, CA\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/warehouses",
+									"host": ["{{base_url}}"],
+									"path": ["api", "warehouses"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Warehouse created successfully\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Secondary Warehouse\",\n        \"location\": \"Los Angeles, CA\",\n        \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n        \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inventory Items",
+			"item": [
+				{
+					"name": "Get All Inventory Items",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/inventory-items",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-items"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/inventory-items",
+									"host": ["{{base_url}}"],
+									"path": ["api", "inventory-items"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"Widget Pro\",\n                \"sku\": \"WP001\",\n                \"price\": 29.99,\n                \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n                \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n            }\n        ],\n        \"current_page\": 1,\n        \"per_page\": 10,\n        \"total\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Search Inventory Items",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/inventory-items?q=Widget&min_price=10&max_price=50",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-items"],
+							"query": [
+								{
+									"key": "q",
+									"value": "Widget"
+								},
+								{
+									"key": "min_price",
+									"value": "10"
+								},
+								{
+									"key": "max_price",
+									"value": "50"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Inventory Item by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/api/inventory-items/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-items", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Inventory Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gadget Max\",\n    \"sku\": \"GM001\",\n    \"price\": 49.99\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/inventory-items",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-items"]
+						}
+					}
+				},
+				{
+					"name": "Update Inventory Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Widget Pro\",\n    \"price\": 34.99\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/inventory-items/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-items", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Inventory Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/inventory-items/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "inventory-items", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Stock Management",
+			"item": [
+				{
+					"name": "Get All Stocks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stocks",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stocks"]
+						}
+					}
+				},
+				{
+					"name": "Get Stocks with Filters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stocks?warehouse_id=1&low_stock=1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stocks"],
+							"query": [
+								{
+									"key": "warehouse_id",
+									"value": "1"
+								},
+								{
+									"key": "low_stock",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Stock by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stocks/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stocks", "1"]
+						}
+					}
+				},
+				{
+					"name": "Add/Update Stock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_id\": 1,\n    \"inventory_item_id\": 1,\n    \"quantity\": 100\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/stocks",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stocks"]
+						}
+					}
+				},
+				{
+					"name": "Update Stock Quantity",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\": 150\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/stocks/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stocks", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Stock",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stocks/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stocks", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Stock Transfers",
+			"item": [
+				{
+					"name": "Get All Stock Transfers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stock-transfers",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stock-transfers"]
+						}
+					}
+				},
+				{
+					"name": "Get Stock Transfers with Filters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stock-transfers?warehouse_id=1&status=completed",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stock-transfers"],
+							"query": [
+								{
+									"key": "warehouse_id",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "completed"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Stock Transfer by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stock-transfers/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stock-transfers", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Stock Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"inventory_item_id\": 1,\n    \"quantity\": 25\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/stock-transfers",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stock-transfers"]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"inventory_item_id\": 1,\n    \"quantity\": 25\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/stock-transfers",
+									"host": ["{{base_url}}"],
+									"path": ["api", "stock-transfers"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Stock transfer completed successfully.\",\n    \"data\": {\n        \"id\": 1,\n        \"from_warehouse_id\": 1,\n        \"to_warehouse_id\": 2,\n        \"inventory_item_id\": 1,\n        \"quantity\": 25,\n        \"status\": \"completed\",\n        \"performed_by\": 1,\n        \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n        \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel Stock Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stock-transfers/1/cancel",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stock-transfers", "1", "cancel"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

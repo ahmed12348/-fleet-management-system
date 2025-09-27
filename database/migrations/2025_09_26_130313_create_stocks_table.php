@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trip_stations', function (Blueprint $table) {
+        Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('trip_id')->constrained()->onDelete('cascade');
-            $table->foreignId('station_id')->constrained()->onDelete('cascade');
-            $table->unsignedInteger('stop_order'); // ترتيب المحطة في الرحلة
+            $table->foreignId('warehouse_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('inventory_item_id')->constrained()->cascadeOnDelete();
+            $table->unsignedInteger('quantity')->default(0);
+            $table->unique(['warehouse_id','inventory_item_id']);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trip_stations');
+        Schema::dropIfExists('stocks');
     }
 };

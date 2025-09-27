@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-Schema::create('buses', function (Blueprint $table) {
-    $table->id();
-    $table->string('plate_number')->unique(); // eg: ABC-123
-    $table->timestamps();
-});
-
+        Schema::create('warehouses', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('location')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,6 +24,6 @@ Schema::create('buses', function (Blueprint $table) {
      */
     public function down(): void
     {
-        Schema::dropIfExists('buses');
+        Schema::dropIfExists('warehouses');
     }
 };

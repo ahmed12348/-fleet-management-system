@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trips', function (Blueprint $table) {
+        Schema::create('inventory_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Cairo to Asyut
-            $table->foreignId('bus_id')->constrained()->onDelete('cascade');
+            $table->string('name')->index();
+            $table->string('sku')->unique();
+            $table->decimal('price', 10, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trips');
+        Schema::dropIfExists('inventory_items');
     }
 };
